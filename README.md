@@ -1,1 +1,4 @@
 # webtech-prj-Agri-Companion
+	Proiectul meu va fi un site web care vine in ajutorul firmelor cu activitatea in domeniul agricol care lucreaza terenul in arenda. Prin intermediul acestui site, intreprinzatorii vor putea sa isi administreze mult mai bine terenurile agricole pe care le lucreaza.
+	Siteul va permite administrarea contractelor de arenda, va avea facilitatea de a afisa o alarma atunci cand un anumit contract se apropie de data expirarii, va permite gestiunea cat mai eficienta si rapida a terenurilor aflate in posesia intreprinderii, si va facilita pe cat posibil procesul administrativ.
+	Ca si operatii posibile, proiectul va permite adaugarea si stergerea unui teren sau a unui client, editarea informatiilor despre terenuri sau clienti, adaugarea unui contract de arenda, actualizarea acestuia si stergerea sa si posibilitatea adaugarii unei alarme care sa atentioneze utilizatorul cu privire la apropierea termenului limita la care contractul expira. 
