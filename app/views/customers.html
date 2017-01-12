@@ -1,0 +1,147 @@
+<h2>{{name}}'s customers</h2>
+<div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nr</th>
+                <th>Name</th>
+                <th>Personal Number</th>
+                <th> ID Number</th>
+                <th>Contract Number</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="customer in customers" ng-include="getTemplate(customer)">
+
+
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td><input type="text" hint='name' class="form-control" id='customerName' placeholder='Name' ng-model='customer.name' /></td>
+                <td><input type="text" id='customerPersNum' class="form-control" placeholder='Personal Number' ng-model='customer.personalNumber' /></td>
+                <td><input type="text" id='customerId' class="form-control" placeholder='ID Number' ng-model='customer.idNumber' /></td>
+                <td> <input type="text" id='customerContract' class="form-control" placeholder='Contract Number' ng-model='customer.contractNumber' /></td>
+                <td>
+                    <button type="button" class="btn btn-default" ng-click='addCustomer(customer)'>
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+                </td>
+            </tr>
+        </tfoot>
+
+    </table>
+
+    <!--<h3>Add an customer</h3>-->
+    <!--<form class='form-login'>-->
+    <!--    <div>-->
+    <!--        <label for="customerName">Name</label>-->
+    <!--        <input type="text" hint='name' id='customerName' placeholder='Name' ng-model='customer.name' />-->
+    <!--        <label for="customerPersNum">Personal Number</label>-->
+    <!--        <input type="text" id='customerPersNum' placeholder='Personal Number' ng-model='customer.personalNumber' />-->
+    <!--    </div>-->
+    <!--    <div>-->
+    <!--        <label for="customerId">ID Number</label>-->
+    <!--        <input type="text" id='customerId' placeholder='ID Number' ng-model='customer.idNumber' />-->
+    <!--        <label for="customerContract">Contract Number</label>-->
+    <!--        <input type="text" id='customerContract' placeholder='Contract Number' ng-model='customer.contractNumber' />-->
+    <!--    </div>-->
+
+    <!--    <input type="button" value="Add" ng-click='addCustomer(customer)' />-->
+    <!--</form>-->
+
+
+    <script type="text/ng-template" id="display">
+        <tr>
+            <td>{{$index+1}}</td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.personalNumber}}</td>
+            <td>{{customer.idNumber}}</td>
+            <td>{{customer.contractNumber}}</td>
+            <td>
+                <button type="button" class="btn btn-default" ng-click="deleteCustomer(customer)">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+                <button type="button" class="btn btn-default" ng-click="editCustomer(customer)">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </button>
+            </td>
+        </tr>
+        <tr class='fieldHeader'>
+            <td></td>
+            <td></td>
+            <th>Fields:</th>
+            <th>Name</th>
+            <th colspan=2>Area</th>
+        </tr>
+        <tr ng-repeat="field in customer.fields">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{field.name}}</td>
+            <td>{{field.customer_field.area}} ha</td>
+            <td>
+                <button type="button" class="btn btn-default" ng-click='deleteField(field,customer)'>
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+
+                <button type="button" class="btn btn-default" ng-click="editField(field,customer)">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </button>
+            </td>
+        </tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            <select class="form-control" ng-model='newField.name'>
+                <option ng-repeat = 'someField in allFields'>{{someField.name}}</option>
+            </select>
+        </td>
+        <td><input type="text" class="form-control" placeholder='Area' ng-model='newField.area' /></td>
+        <td>
+            <button type="button" class="btn btn-default" ng-click='addField(newField,customer)'>
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+        </td>
+    </script>
+
+    <script type="text/ng-template" id="edit">
+        <td>{{$index+1}}</td>
+        <td><input type="text" class="form-control" ng-model="customer.name" /></td>
+        <td><input type="text" class="form-control" ng-model="customer.personalNumber" /></td>
+        <td><input type="text" class="form-control" ng-model="customer.idNumber" /></td>
+        <td><input type="text" class="form-control" ng-model="customer.contractNumber" /></td>
+        <td>
+
+            <button type="button" class="btn btn-default" ng-click="saveCustomer(customer)">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </button>
+            <button type="button" class="btn btn-default" ng-click="cancelEditing()">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+
+        </td>
+    </script>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

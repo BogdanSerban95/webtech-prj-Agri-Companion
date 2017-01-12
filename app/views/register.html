@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-5 col-md-3">
+            <form class="form-login" name="newUserForm">
+                <h4>Create account</h4>
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></div>
+                    <input type="text" id="nameInput" name="nameInput" class="form-control input-sm chat-input" placeholder="Enter your Name" ng-model-options="{updateOn: 'keyup blur'}" required ng-model='user.name' />
+                </div>
+                <div class="error-text" ng-messages="newUserForm.nameInput.$error" ng-show="newUserForm.nameInput.$dirty">
+                    <div ng-message="required">Your must enter your name!</div>
+                </div>
+                <br>
+
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></div>
+                    <input type="email" id="emailInput" name="emailInput" class="form-control input-sm chat-input" placeholder="Enter your Email" check-email ng-model='user.email' />
+                </div>
+                <div class="error-text" ng-messages="newUserForm.emailInput.$error" ng-show="newUserForm.emailInput.$dirty">
+                    <div ng-message="invalidEmail">Your email address is invalid!</div>
+                </div>
+                <br>
+
+
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></div>
+                    <input type="text" id="userNameInput" name="userNameInput" class="form-control input-sm chat-input" placeholder="Enter your Username" ng-model='user.username' minLength="6" ng-model-options="{updateOn: 'default blur', debounce:{default:500, blur: 0}}"
+                        check-username/>
+
+                </div>
+                <div class="error-text" ng-messages="newUserForm.userNameInput.$error" ng-show="newUserForm.userNameInput.$dirty">
+                    <div ng-message="required">Username is required!</div>
+                    <div ng-message="minlength">Username is too short!</div>
+                    <div ng-message="invalidUsername">Username is not available!</div>
+                </div>
+                <br>
+
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></div>
+                    <input type="password" id="passInput" name="passInput" minLength="8" ng-required class="form-control input-sm chat-input" placeholder="Enter your Password" ng-model='user.password' />
+                </div>
+                <div class="error-text" ng-messages="newUserForm.passInput.$error" ng-show="newUserForm.passInput.$dirty">
+                    <div ng-message="required">Password is required!</div>
+                    <div ng-message="minlength">Password is too short!</div>
+                </div>
+                <br>
+
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></div>
+                    <input type="password" id="confirmPassInput" name="confirmPassInput" class="form-control input-sm chat-input" ng-required check-pass="passInput" placeholder="Confirm your Password" ng-model-options="{updateOn: 'keyup blur'}" ng-model='user.passConfirm'
+                    />
+
+                </div>
+                <div class="error-text" ng-messages="newUserForm.confirmPassInput.$error" ng-show="newUserForm.confirmPassInput.$dirty">
+                    <div ng-message="unmatchingPassword">Passwords don't match!</div>
+                </div>
+
+                <br>
+
+                <div class="wrapper">
+                    <span class="group-btn">     
+                    <a ng-click = 'register(user)' class="btn btn-success btn-block">Create Account <i class="fa fa-sign-in"></i></a>
+                <a href="#" ng-click = "toLogin()" class="btn btn-primary btn-block">Login <i class="fa fa-sign-in"></i></a>
+            </span>
+                </div>
+        </div>
+
+        </form>
+    </div>
+</div>

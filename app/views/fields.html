@@ -1,0 +1,57 @@
+<h2>{{name}}'s fields</h2>
+<div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Field Name</th>
+                <th>Total Surface</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="field in fields" ng-include="getTemplate(field)"></tr>
+        </tbody>
+
+        <tfoot>
+            <td></td>
+            <td><input type="text" hint='name' class="form-control" id='fieldName' placeholder="Name" ng-model='field.name' /></td>
+            <td> <input type="numeric" hint='surface' class="form-control" id='fieldSurface' placeholder="Area" ng-model='field.surface' /></td>
+            <td>
+                <button type="button" class="btn btn-default" ng-click='addField(field)'>
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </td>
+        </tfoot>
+
+    </table>
+
+    <script type="text/ng-template" id="display">
+        <td>{{$index+1}}</td>
+        <td>{{field.name}}</td>
+        <td>{{field.surface}} ha</td>
+        <td>
+
+            <button type="button" class="btn btn-default" ng-click="deleteField(field)">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            <button type="button" class="btn btn-default" ng-click="editField(field)">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </button>
+        </td>
+    </script>
+    <script type="text/ng-template" id="edit">
+        <td>{{$index+1}}</td>
+        <td><input type="text" class="form-control" ng-model="field.name" /></td>
+        <td><input type="text" class="form-control" ng-model="field.surface" /></td>
+        <td>
+
+            <button type="button" class="btn btn-default" ng-click="saveField(field)">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </button>
+            <button type="button" class="btn btn-default" ng-click="cancelEditing()">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+        </td>
+    </script>
+</div>

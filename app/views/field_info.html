@@ -1,0 +1,11 @@
+<div class="modal-header">
+  <h3 class="modal-title">Edit field</h3>
+</div>
+<div class="modal-body">
+  {{field.name}}
+  <input type="text" placeholder = 'Area' ng-model = 'field.customer_field.area'/>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="save(field)">Save</button>
+  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>
+ 
